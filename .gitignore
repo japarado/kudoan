@@ -18,4 +18,6 @@ tags.temp
 # database
 *.sqlite
 
+# mysql workbench files
+*.bak
 
