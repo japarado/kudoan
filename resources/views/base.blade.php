@@ -13,10 +13,6 @@
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-        <!-- Include a custom stylesheet for the login screen -->
-        @if(basename(Request::url()) == 'login')
-            <link rel="stylesheet" href="{{ asset('css/login.css') }}"/>
-        @endif
 
         <title>E-Manager - @yield('title')</title>
     </head>
