@@ -30,12 +30,13 @@
             @endguest
 
             @auth
-                {{ Form::open(['route' => 'logout', 'method' => 'post']) }}
+                <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit()">
+                    Log Out
+                </a>
+
+                {{ Form::open(['route' => 'logout', 'method' => 'post', 'id' => 'logout-form']) }}
                     {{ Form::token() }}
-                    <li class="nav-item">
-                        <button class="nav-link">Log Out</button>
-                    </li>
-                {{ Form::token() }}
+                {{ Form::close() }}
             @endauth
         </ul>
         <!--<form class="form-inline mt-2 mt-md-0">
