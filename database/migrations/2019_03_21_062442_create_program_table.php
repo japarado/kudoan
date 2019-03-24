@@ -19,16 +19,21 @@ class CreateProgramTable extends Migration
             $table->string('name');
             $table->integer('admin_id')->unsigned();
             $table->date('date');
-            $table->string('time_from');
-            $table->string('time_to');
+            $table->time('time_from');
+            $table->time('time_to');
             $table->string('venue');
             $table->text('what_is');
             $table->text('objective');
             $table->text('program');
+
             $table->timestamps();
+
+            // Foreign Keys
+            $table->foreign('admin_id')->references('admin_id')->on('admin');
 
             // Indices
             $table->index('name');
+            $table->index('admin_id');
         });
     }
 
