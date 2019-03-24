@@ -8,6 +8,14 @@
             <li class="nav-item @yield('home-active')">
                 <a class="nav-link" href="{{ URL::to('/') }}">Home <span class="sr-only">(current)</span></a>
             </li>
+
+            @auth
+                {{ Auth::user()->id }}
+                <li class="nav-item @yield('home-active')">
+                    <a class="nav-link" href="{{ URL::to('/') }}">Create Event<span class="sr-only">(current)</span></a>
+                </li>
+            @endauth
+
         </ul>
         <ul class="navbar-nav ml-auto">
             @guest
