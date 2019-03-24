@@ -10,10 +10,11 @@
             </li>
 
             @auth
-                {{ Auth::user()->id }}
-                <li class="nav-item @yield('home-active')">
-                    <a class="nav-link" href="{{ URL::to('/') }}">Create Event<span class="sr-only">(current)</span></a>
-                </li>
+                @if(Auth::user()->type === 'ADMIN')
+                    <li class="nav-item @yield('create-program-active')">
+                        <a class="nav-link" href="{{ route('program.create') }}">Create Program<span class="sr-only">(current)</span></a>
+                    </li>
+                @endif
             @endauth
 
         </ul>
@@ -31,12 +32,20 @@
             @endguest
 
             @auth
-                <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit()">
-                    Log Out
-                </a>
+                <li class="nav-item">
+                    <a class="nav-link"">
+                        {{ Auth::user()->name }}
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit()">
+                        Log Out
+                    </a>
+                </li>
 
                 {{ Form::open(['route' => 'logout', 'method' => 'post', 'id' => 'logout-form']) }}
-                    {{ Form::token() }}
+                {{ Form::token() }}
                 {{ Form::close() }}
             @endauth
         </ul>

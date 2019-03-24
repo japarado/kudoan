@@ -37,7 +37,7 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function authenticated()
+    /*public function authenticated()
     {
         $user = Auth::user();
 
@@ -45,5 +45,5 @@ class LoginController extends Controller
         {
             return redirect()->route('admin');
         }
-    }
+    }*/
 }
