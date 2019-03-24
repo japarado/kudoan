@@ -16,4 +16,9 @@ class Program extends Model
     {
         return $this->belongsToMany(Sponsor::class);
     }
+
+    public function speakers()
+    {
+        return $this->belongsToMany(Speaker::class);
+    }
 }
