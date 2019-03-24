@@ -8,19 +8,12 @@
             <li class="nav-item @yield('home-active')">
                 <a class="nav-link" href="{{ URL::to('/') }}">Home <span class="sr-only">(current)</span></a>
             </li>
-            <!--<li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link disabled" href="#">Disabled</a>
-                </li>-->
         </ul>
         <ul class="navbar-nav ml-auto">
             @guest
                 <li class="nav-item @yield('login-active')">
                     <a class="nav-link" href="{{ route('login') }}">Login</a>
                 </li>
-
             @endguest
 
             @guest
