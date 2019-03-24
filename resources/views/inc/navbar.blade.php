@@ -33,7 +33,7 @@
 
             @auth
                 <li class="nav-item">
-                    <a class="nav-link"">
+                    <a class="nav-link">
                         {{ Auth::user()->name }}
                     </a>
                 </li>

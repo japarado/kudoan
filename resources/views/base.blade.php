@@ -20,12 +20,13 @@
     </head>
 
     <body>
+
         <header id="header">
             @include('inc.navbar')
         </header>
 
         <main id="main">
-            <div class="container-fluid mt-5">
+            <div class="container-fluid">
                 @yield('content')
             </div>
         </main>

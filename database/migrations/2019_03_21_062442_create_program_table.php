@@ -17,13 +17,14 @@ class CreateProgramTable extends Migration
             $table->bigIncrements('id');
 
             $table->string('name');
+            $table->integer('admin_id')->unsigned();
+            $table->date('date');
             $table->string('time_from');
             $table->string('time_to');
-            $table->string('date_from');
-            $table->string('date_to');
+            $table->string('venue');
+            $table->text('what_is');
             $table->text('objective');
-            $table->text('desc');
-
+            $table->text('program');
             $table->timestamps();
 
             // Indices
