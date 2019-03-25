@@ -21,7 +21,7 @@ class SpeakerController extends Controller
             'speakers' => $speakers,
         ];
 
-        return view('speaker.index', $context)
+        return view('speaker.index', $context);
     }
 
     /**
