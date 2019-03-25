@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProgramSpeakerTable extends Migration
+class CreateProgramSponsorTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,16 @@ class CreateProgramSpeakerTable extends Migration
      */
     public function up()
     {
-        Schema::create('program_speaker', function (Blueprint $table) {
+        Schema::create('program_sponsor', function (Blueprint $table) {
             $table->integer('program_id')->unsigned();
-            $table->integer('speaker_id')->unsigned();
+            $table->integer('sponsor_id')->unsigned();
 
             $table->foreign('program_id')->references('id')->on('program');
-            $table->foreign('speaker_id')->references('id')->on('speaker');
+            $table->foreign('sponsor_id')->references('id')->on('sponsor');
 
             $table->primary([
                 'program_id',
-                'speaker_id',
+                'sponsor_id'
             ]);
         });
     }
@@ -34,6 +34,6 @@ class CreateProgramSpeakerTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('program_speaker');
+        Schema::dropIfExists('program_sponsor');
     }
 }
