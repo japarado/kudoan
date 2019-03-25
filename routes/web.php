@@ -21,3 +21,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('program', 'ProgramController');
 Route::resource('admin', 'AdminController');
+Route::resource('speaker', 'SpeakerController');
+Route::resource('sponsor', 'SponsorController');

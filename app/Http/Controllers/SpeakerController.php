@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Speaker;
+
 class SpeakerController extends Controller
 {
     /**
@@ -13,7 +15,13 @@ class SpeakerController extends Controller
      */
     public function index()
     {
-        //
+        $speakers = Speaker::all();
+
+        $context = [
+            'speakers' => $speakers,
+        ];
+
+        return view('speaker.index', $context)
     }
 
     /**
