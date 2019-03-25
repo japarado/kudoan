@@ -70,7 +70,7 @@ class ProgramController extends Controller
 
 
         $sponsors = $request->input('sponsors');
-        $speakers = $request->input('speakers');https://laravel.com/docs/5.8/redirects
+        $speakers = $request->input('speakers');
 
 
         $program->save();
@@ -79,7 +79,7 @@ class ProgramController extends Controller
         $program->speakers()->attach($speakers);
         $program->sponsors()->attach($sponsors);
 
-        return redirect()->action('ProgramController@index');
+        return redirect()->action('ProgramController@edit', [$program]);
     }
 
     /**
@@ -129,6 +129,7 @@ class ProgramController extends Controller
             array_push($taken_speaker_ids, $taken_speaker->speaker_id);
         }
 
+
         $sponsors = Sponsor::whereNotIn('id', $taken_sponsor_ids)->get();
         $speakers = Speaker::whereNotIn('id', $taken_speaker_ids)->get();
 
@@ -166,6 +167,10 @@ class ProgramController extends Controller
         $speakers = $request->input('speakers');
 
         $program->save();
+
+        // Detach the relationship data to not violate the PK constraint (composite primary key in bridge table)
+        $program->speakers()->detach();
+        $program->sponsors()->detach();
 
         // Retrieve the M:N Relationship data. Using sync() will set them up anew rather than simply appending the new data
         $program->speakers()->attach($speakers);

@@ -62,13 +62,13 @@
                     <h2>Sponsors</h2>
                     <div class="form-check">
                         @foreach($program->sponsors as $current_sponsor)
-                            {{ Form::checkbox('sponsors', $current_sponsor->id, true) }}
+                            {{ Form::checkbox('sponsors[]', $current_sponsor->id, true) }}
                             {{ Form::label($current_sponsor->id, $current_sponsor->name) }}
                         @endforeach
 
                         @foreach($sponsors as $sponsor)
-                            {{ Form::checkbox('sponsors', $current_sponsor->id, false) }}
-                            {{ Form::label($current_sponsor->id, $current_sponsor->name) }}
+                            {{ Form::checkbox('sponsors[]', $sponsor->id, false) }}
+                            {{ Form::label($sponsor->id, $sponsor->name) }}
                         @endforeach
                     </div>
                 </div>
@@ -76,13 +76,13 @@
                     <h2>Speakers</h2>
                     <div class="form-check">
                         @foreach($program->speakers as $current_speaker)
-                            {{ Form::checkbox('speakers', $current_speaker->id, true) }}
+                            {{ Form::checkbox('speakers[]', $current_speaker->id, true) }}
                             {{ Form::label($current_speaker->id, $current_speaker->name) }}
                         @endforeach
 
                         @foreach($speakers as $speaker)
-                            {{ Form::checkbox('speakers', $current_speaker->id, false) }}
-                            {{ Form::label($current_speaker->id, $current_speaker->name) }}
+                            {{ Form::checkbox('speakers[]', $speaker->id, false) }}
+                            {{ Form::label($speaker->id, $speaker->name) }}
                         @endforeach
                     </div>
                 </div>
