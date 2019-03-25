@@ -91,13 +91,9 @@ class ProgramController extends Controller
     public function show($id)
     {
         $program = Program::find($id);
-        $sponsors = Sponsor::all();
-        $speakers = Speaker::all();
 
         $context = [
             'program' => $program,
-            'sponsors' => $sponsors,
-            'speakers' => $speakers
         ];
 
         return view('program.show', $context);

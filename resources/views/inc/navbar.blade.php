@@ -23,8 +23,16 @@
                         <a class="nav-link" href="{{ route('speaker.index') }}">Speakers<span class="sr-only">(current)</span></a>
                     </li>
 
+                    <li class="nav-item @yield('create-speaker-active')">
+                        <a class="nav-link" href="{{ route('speaker.create') }}">Create Speakers<span class="sr-only">(current)</span></a>
+                    </li>
+
                     <li class="nav-item @yield('sponsor-active')">
                         <a class="nav-link" href="{{ route('sponsor.index') }}">Sponsors<span class="sr-only">(current)</span></a>
+                    </li>
+
+                    <li class="nav-item @yield('create-sponsor-active')">
+                        <a class="nav-link" href="{{ route('sponsor.create') }}">Create Sponsors<span class="sr-only">(current)</span></a>
                     </li>
                 @endif
             @endauth

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Speaker;
+use Illuminate\Support\Facades\Storage;
 
 class SpeakerController extends Controller
 {
@@ -32,6 +33,7 @@ class SpeakerController extends Controller
     public function create()
     {
         //
+        return view('speaker.create');
     }
 
     /**
