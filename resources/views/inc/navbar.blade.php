@@ -9,11 +9,12 @@
                 <a class="nav-link" href="{{ URL::to('/') }}">Home <span class="sr-only">(current)</span></a>
             </li>
 
+            <li class="nav-item @yield('program-active')">
+                <a class="nav-link" href="{{ route('program.index') }}">Programs<span class="sr-only">(current)</span></a>
+            </li>
+
             @auth
                 @if(Auth::user()->type === 'ADMIN')
-                    <li class="nav-item @yield('program-active')">
-                        <a class="nav-link" href="{{ route('program.index') }}">Programs<span class="sr-only">(current)</span></a>
-                    </li>
 
                     <li class="nav-item @yield('create-program-active')">
                         <a class="nav-link" href="{{ route('program.create') }}">Create Program<span class="sr-only">(current)</span></a>

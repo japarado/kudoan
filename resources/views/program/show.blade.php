@@ -76,6 +76,11 @@
                         @endforeach
                     </div>
                 </div>
+                @if(Auth::user()->admin())
+                    HI
+                @else
+                    AWAA
+                @endif
             {{ Form::close() }}
         </div>
     </div>
