@@ -54,7 +54,26 @@ class ProgramController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $program = new Program;
+
+        $program->name = $request->input('name');
+        $program->date = $request->input('date');
+        $program->time_from = $request->input('time_from');
+        $program->time_to = $request->input('time_to');
+        $program->what_is = $request->input('what_is');
+        $program->objective = $request->input('objective');
+        $program->program = $request->input('program');
+
+        $sponsors = $request->input('sponsors');
+        $speakers = $request->input('speakers');
+
+        // Retrieve the M:N Relationship data. Using sync() will set them up anew rather than simply appending the new data
+        $program->speakers()->sync($speakers);
+        $program->sponsors()->sync($sponsors);
+
+        $program->save();
+
+        return view('program.index');
     }
 
     /**
