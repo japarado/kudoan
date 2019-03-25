@@ -6,18 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 // Import Models
 use App\User;
-use App\Event;
+use App\Program;
 
 class Admin extends Model
 {
-    //
+    protected $table = 'admin';
     public function user()
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class);
     }
 
-    public function events()
+    public function programs()
     {
-        return $this->hasMany(Event::class);
+        return $this->hasMany(Program::class);
     }
 }

@@ -63,15 +63,15 @@ class ProgramController extends Controller
         $program->what_is = $request->input('what_is');
         $program->objective = $request->input('objective');
         $program->program = $request->input('program');
-        $program->admin_id = auth()->user()->id;
+        $program->admin_id = auth()->user()->admin->user_id;
+
 
         $sponsors = $request->input('sponsors');
         $speakers = $request->input('speakers');
 
-        return gettype($sponsors);
 
         $program->save();
-        //
+
         // Retrieve the M:N Relationship data. Using sync() will set them up anew rather than simply appending the new data
         $program->speakers()->sync($speakers);
         $program->sponsors()->sync($sponsors);
