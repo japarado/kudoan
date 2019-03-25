@@ -129,8 +129,8 @@ class ProgramController extends Controller
             array_push($taken_speaker_ids, $taken_speaker->speaker_id);
         }
 
-        $sponsors = Sponsor::whereNotIn('id', $taken_sponsor_ids);
-        $speakers = Speaker::whereNotIn('id', $taken_speaker_ids);
+        $sponsors = Sponsor::whereNotIn('id', $taken_sponsor_ids)->get();
+        $speakers = Speaker::whereNotIn('id', $taken_speaker_ids)->get();
 
         $context = [
             'program' => $program,
