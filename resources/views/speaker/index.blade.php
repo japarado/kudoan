@@ -1,5 +1,9 @@
 @extends('base')
 
+@section('title')
+    Speakers
+@endsection
+
 @section('speaker-active')
     active
 @endsection

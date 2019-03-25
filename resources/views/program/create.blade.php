@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('title')
-    Create Event
+    Create Program
 @endsection
 
 @section('create-program-active')
@@ -10,7 +10,7 @@
 
 @section('content')
     <h1 class="text-center mt-4">
-        Create a New Event
+        Create A Program
     </h1>
     <div class="row d-flex justify-content-center">
         <div class="col-md-8">
@@ -59,7 +59,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <h2>Event Sponsors</h2>
+                    <h2>Sponsors</h2>
                     <div class="form-check">
                         @foreach($sponsors as $sponsor)
                             {{ Form::checkbox($sponsor->name, $sponsor->id) }}
@@ -68,7 +68,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <h2>Event Speakers</h2>
+                    <h2>Speakers</h2>
                     <div class="form-check">
                         @foreach($speakers as $speaker)
                             {{ Form::checkbox($speaker->name, $speaker->id) }}
@@ -76,6 +76,7 @@
                         @endforeach
                     </div>
                 </div>
+                {{ Form::submit('Save', ['class' => 'btn btn-primary']) }}
             {{ Form::close() }}
         </div>
     </div>

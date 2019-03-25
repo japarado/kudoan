@@ -1,5 +1,9 @@
 @extends('base')
 
+@section('title')
+    Sponsors
+@endsection
+
 @section('sponsor-active')
     active
 @endsection

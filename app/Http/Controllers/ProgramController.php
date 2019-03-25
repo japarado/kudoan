@@ -21,7 +21,13 @@ class ProgramController extends Controller
      */
     public function index()
     {
-        $programs = Program::all()
+        $programs = Program::all();
+
+        $context = [
+            'programs' => $programs,
+        ];
+
+        return view('program.index', $context);
     }
 
     /**
