@@ -4,7 +4,7 @@
     Editing {{ $program->name }}
 @endsection
 
-@section('create-program-active')
+@section('program-active')
     active
 @endsection
 

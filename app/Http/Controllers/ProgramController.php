@@ -70,7 +70,7 @@ class ProgramController extends Controller
 
 
         $sponsors = $request->input('sponsors');
-        $speakers = $request->input('speakers');
+        $speakers = $request->input('speakers');https://laravel.com/docs/5.8/redirects
 
 
         $program->save();
@@ -79,7 +79,7 @@ class ProgramController extends Controller
         $program->speakers()->sync($speakers);
         $program->sponsors()->sync($sponsors);
 
-        return view('program.index');
+        return redirect()->action('ProgramController@index');
     }
 
     /**
@@ -167,7 +167,11 @@ class ProgramController extends Controller
 
         $program->save();
 
-        return redirect('program.edit', ['id' => $id]);
+        // Retrieve the M:N Relationship data. Using sync() will set them up anew rather than simply appending the new data
+        $program->speakers()->sync($speakers);
+        $program->sponsors()->sync($sponsors);
+
+        return redirect()->action('ProgramController@edit', ['id' => $program->id]);
     }
 
     /**
@@ -178,6 +182,10 @@ class ProgramController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $program = Program::find($id);
+
+        $program->destroy();
+
+        return redirect()->route('program');
     }
 }
