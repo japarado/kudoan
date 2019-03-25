@@ -57,6 +57,14 @@
                         </div>
                     </div>
                 </div>
+                <div class="form-group">
+                    <div class="form-check">
+                        @foreach($sponsors as $sponsor)
+                            {{ Form::checkbox($sponsor->name, $sponsor->id) }}
+                            {{ Form::label($sponsor->id, $sponsor->name) }}
+                        @endforeach
+                    </div>
+                </div>
             {{ Form::close() }}
         </div>
     </div>

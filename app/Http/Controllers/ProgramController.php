@@ -31,7 +31,12 @@ class ProgramController extends Controller
     public function create()
     {
         //
-        return view('program.create');
+        $context = [
+            'speakers' => Speaker::all(),
+            'sponsors' => Sponsor::all(),
+        ];
+
+        return view('program.create', $context);
     }
 
     /**

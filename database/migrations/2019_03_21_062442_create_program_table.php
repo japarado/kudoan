@@ -30,11 +30,7 @@ class CreateProgramTable extends Migration
             $table->timestamps();
 
             // Foreign Keys
-            $table->foreign('admin_id')->references('admin_id')->on('admin');
-
-            // Indices
-            $table->index('name');
-            $table->index('admin_id');
+            $table->foreign('admin_id')->references('user_id')->on('admin');
         });
     }
 
