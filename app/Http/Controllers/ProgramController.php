@@ -71,7 +71,7 @@ class ProgramController extends Controller
             'program' => $program
         ];
 
-        return view('program.show')
+        return view('program.show');
     }
 
     /**
