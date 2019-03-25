@@ -19,34 +19,34 @@
                 <div class="form-row">
                     <div class="col">
                         {{ Form::label('name', 'Event Name') }}
-                        {{ Form::text('name', '', ['class' => 'form-control']) }}
+                        {{ Form::text('name', $program->name, ['class' => 'form-control']) }}
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col">
                         {{ Form::label('date', 'Date') }}
-                        {{ Form::date('date','', ['class' => 'form-control']) }}
+                        {{ Form::date('date', $program->date,  ['class' => 'form-control']) }}
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col">
                         {{ Form::label('time_from', 'Time From') }}
-                        {{ Form::time('time_from', '', ['class' => 'form-control']) }}
+                        {{ Form::time('time_from', $program->time_from, ['class' => 'form-control']) }}
                     </div>
                     <div class="col">
                         {{ Form::label('time_to', 'Time To') }}
-                        {{ Form::time('time_to', '', ['class' => 'form-control']) }}
+                        {{ Form::time('time_to', $program->time_to,  ['class' => 'form-control']) }}
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="form-row">
                         <div class="col">
                             {{ Form::label('what_is', 'What Is') }}
-                            {{ Form::textarea('what_is', '', ['class' => 'form-control']) }}
+                            {{ Form::textarea('what_is', $program->what_is,  ['class' => 'form-control']) }}
                         </div>
                         <div class="col">
                             {{ Form::label('objective', 'Objective') }}
-                            {{ Form::textarea('objective', '', ['class' => 'form-control']) }}
+                            {{ Form::textarea('objective', $program->objective, ['class' => 'form-control']) }}
                         </div>
                     </div>
                 </div>
@@ -54,25 +54,35 @@
                     <div class="form-row">
                         <div class="col">
                             {{ Form::label('program', 'Program') }}
-                            {{ Form::textarea('program', '', ['class' => 'form-control']) }}
+                            {{ Form::textarea('program', $program->program, ['class' => 'form-control']) }}
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <h2>Sponsors</h2>
                     <div class="form-check">
-                        @foreach($program->sponsors as $sponsor)
-                            {{ Form::checkbox('sponsors', $sponsor->id) }}
-                            {{ Form::label($sponsor->id, $sponsor->name) }}
+                        @foreach($program->sponsors as $current_sponsor)
+                            {{ Form::checkbox('sponsors', $current_sponsor->id, true) }}
+                            {{ Form::label($current_sponsor->id, $current_sponsor->name) }}
+                        @endforeach
+
+                        @foreach($sponsors as $sponsor)
+                            {{ Form::checkbox('sponsors', $current_sponsor->id, false) }}
+                            {{ Form::label($current_sponsor->id, $current_sponsor->name) }}
                         @endforeach
                     </div>
                 </div>
                 <div class="form-group">
                     <h2>Speakers</h2>
                     <div class="form-check">
-                        @foreach($program->speakers as $speaker)
-                            {{ Form::checkbox('speakers', $speaker->id) }}
-                            {{ Form::label($speaker->id, $speaker->name) }}
+                        @foreach($program->speakers as $current_speaker)
+                            {{ Form::checkbox('speakers', $current_speaker->id, true) }}
+                            {{ Form::label($current_speaker->id, $current_speaker->name) }}
+                        @endforeach
+
+                        @foreach($speakers as $speaker)
+                            {{ Form::checkbox('speakers', $current_speaker->id, false) }}
+                            {{ Form::label($current_speaker->id, $current_speaker->name) }}
                         @endforeach
                     </div>
                 </div>

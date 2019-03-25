@@ -18,5 +18,11 @@ class SpeakerTableSeeder extends Seeder
             'desc' => 'Feldragon Hunter',
             'picture' => 'picture',
         ]);
+
+        DB::table('speaker')->insert([
+            'name' => 'Kid Pena',
+            'desc' => 'KIDLat ng Makati',
+            'picture' => 'picture',
+        ]);
     }
 }

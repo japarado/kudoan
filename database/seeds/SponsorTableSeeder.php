@@ -19,5 +19,11 @@ class SponsorTableSeeder extends Seeder
             'logo' => 'LOGO',
             'desc' => 'A manufacturing company sponsor',
         ]);
+
+        DB::table('sponsor')->insert([
+            'name' => 'UNICEF',
+            'logo' => 'LOGO',
+            'desc' => 'A manufacturing company sponsor',
+        ]);
     }
 }
