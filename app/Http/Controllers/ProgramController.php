@@ -93,7 +93,7 @@ class ProgramController extends Controller
             'program' => $program
         ];
 
-        return view('program.show');
+        return view('program.show', $context);
     }
 
     /**
@@ -105,6 +105,13 @@ class ProgramController extends Controller
     public function edit($id)
     {
         //
+        $program = Program::find($id);
+
+        $context = [
+            'program' => $program,
+        ];
+
+        return view('program.edit', $context);
     }
 
     /**
