@@ -22,7 +22,7 @@ class CreateProgramTable extends Migration
             $table->date('date');
             $table->time('time_from');
             $table->time('time_to');
-            $table->string('venue');
+            $table->string('venue')->nullable();
             $table->text('what_is');
             $table->text('objective');
             $table->text('program');
