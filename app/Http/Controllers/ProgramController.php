@@ -65,7 +65,13 @@ class ProgramController extends Controller
      */
     public function show($id)
     {
-        //
+        $program = Program::find($id);
+
+        $context = [
+            'program' => $program
+        ];
+
+        return view('program.show')
     }
 
     /**
