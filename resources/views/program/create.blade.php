@@ -62,7 +62,7 @@
                     <h2>Sponsors</h2>
                     <div class="form-check">
                         @foreach($sponsors as $sponsor)
-                            {{ Form::checkbox($sponsor->name, $sponsor->id) }}
+                            {{ Form::checkbox('sponsors', $sponsor->id) }}
                             {{ Form::label($sponsor->id, $sponsor->name) }}
                         @endforeach
                     </div>
@@ -71,7 +71,7 @@
                     <h2>Speakers</h2>
                     <div class="form-check">
                         @foreach($speakers as $speaker)
-                            {{ Form::checkbox($speaker->name, $speaker->id) }}
+                            {{ Form::checkbox('speakers', $speaker->id) }}
                             {{ Form::label($speaker->id, $speaker->name) }}
                         @endforeach
                     </div>
