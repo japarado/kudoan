@@ -15,6 +15,7 @@
     <div class="row d-flex justify-content-center">
         <div class="col-md-8">
             {{ Form::open(['route' => 'program.store', 'method' => 'post']) }}
+                {{ Form::token() }}
                 <div class="form-row">
                     <div class="col">
                         {{ Form::label('name', 'Event Name') }}
@@ -58,10 +59,20 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <h2>Event Sponsors</h2>
                     <div class="form-check">
                         @foreach($sponsors as $sponsor)
                             {{ Form::checkbox($sponsor->name, $sponsor->id) }}
                             {{ Form::label($sponsor->id, $sponsor->name) }}
+                        @endforeach
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h2>Event Speakers</h2>
+                    <div class="form-check">
+                        @foreach($speakers as $speaker)
+                            {{ Form::checkbox($speaker->name, $speaker->id) }}
+                            {{ Form::label($speaker->id, $speaker->name) }}
                         @endforeach
                     </div>
                 </div>
