@@ -73,8 +73,8 @@ class ProgramController extends Controller
         $program->save();
 
         // Retrieve the M:N Relationship data. Using sync() will set them up anew rather than simply appending the new data
-        $program->speakers()->sync($speakers);
-        $program->sponsors()->sync($sponsors);
+        //$program->speakers()->sync($speakers);
+        //$program->sponsors()->sync($sponsors);
 
         return view('program.index');
     }

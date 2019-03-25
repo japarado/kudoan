@@ -11,6 +11,7 @@ use App\Program;
 class Admin extends Model
 {
     protected $table = 'admin';
+
     public function user()
     {
         return $this->belongsTo(User::class);

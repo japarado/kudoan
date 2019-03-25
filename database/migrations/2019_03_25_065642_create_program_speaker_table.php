@@ -17,6 +17,7 @@ class CreateProgramSpeakerTable extends Migration
             $table->integer('program_id')->unsigned();
             $table->integer('speaker_id')->unsigned();
 
+
             $table->foreign('program_id')->references('id')->on('program');
             $table->foreign('speaker_id')->references('id')->on('speaker');
 
