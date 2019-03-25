@@ -76,11 +76,11 @@
                         @endforeach
                     </div>
                 </div>
-                @if(Auth::user()->admin())
-                    HI
-                @else
-                    AWAA
-                @endif
+                @auth
+                    @if(Auth::user()->admin)
+                        <a class="btn btn-primary" href="{{ route('program.edit', $program->id) }}">Edit</a>
+                    @endif
+                @endauth
             {{ Form::close() }}
         </div>
     </div>

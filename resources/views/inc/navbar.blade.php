@@ -9,12 +9,26 @@
                 <a class="nav-link" href="{{ URL::to('/') }}">Home <span class="sr-only">(current)</span></a>
             </li>
 
-            <li class="nav-item @yield('program-active')">
-                <a class="nav-link" href="{{ route('program.index') }}">Programs<span class="sr-only">(current)</span></a>
-            </li>
+            @guest
+                <li class="nav-item @yield('program-active')">
+                    <a class="nav-link" href="{{ route('program.index') }}">Programs<span class="sr-only">(current)</span></a>
+                </li>
+
+                <li class="nav-item @yield('speaker-active')">
+                    <a class="nav-link" href="{{ route('speaker.index') }}">Speakers<span class="sr-only">(current)</span></a>
+                </li>
+
+                <li class="nav-item @yield('sponsor-active')">
+                    <a class="nav-link" href="{{ route('sponsor.index') }}">Sponsors<span class="sr-only">(current)</span></a>
+                </li>
+            @endguest
 
             @auth
                 @if(Auth::user()->type === 'ADMIN')
+
+                    <li class="nav-item @yield('program-active')">
+                        <a class="nav-link" href="{{ route('program.index') }}">Programs<span class="sr-only">(current)</span></a>
+                    </li>
 
                     <li class="nav-item @yield('create-program-active')">
                         <a class="nav-link" href="{{ route('program.create') }}">Create Program<span class="sr-only">(current)</span></a>
