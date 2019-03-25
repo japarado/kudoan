@@ -20,7 +20,10 @@
                 <p class="font-weight-light"> Date: {{ $program->date }}</p>
                 <p class="font-weight-light">{{ $program->time_from }} - {{ $program->time_to }}</p>
                 <a class="btn btn-primary" href="{{ route('program.edit', $program->id) }}">Edit</a>
-                <a class="btn btn-danger" href="{{ route('program.destroy', $program->id) }}">Delete</a>
+                {{ Form::open(['route' => ['program.destroy', $program->id], 'method' => 'delete']) }}
+                    {{ Form::token() }}
+                    {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
+                {{ Form::close() }}
             </li>
         @endforeach
     </ul>

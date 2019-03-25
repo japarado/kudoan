@@ -14,7 +14,7 @@
     </h1>
     <div class="row d-flex justify-content-center">
         <div class="col-md-8">
-            {{ Form::open(['route' => 'program.store', 'method' => 'post']) }}
+            {{ Form::open(['route' => ['program.update', $program->id], 'method' => 'PUT']) }}
                 {{ Form::token() }}
                 <div class="form-row">
                     <div class="col">

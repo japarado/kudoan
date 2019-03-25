@@ -76,8 +76,8 @@ class ProgramController extends Controller
         $program->save();
 
         // Retrieve the M:N Relationship data. Using sync() will set them up anew rather than simply appending the new data
-        $program->speakers()->sync($speakers);
-        $program->sponsors()->sync($sponsors);
+        $program->speakers()->attach($speakers);
+        $program->sponsors()->attach($sponsors);
 
         return redirect()->action('ProgramController@index');
     }
@@ -168,8 +168,8 @@ class ProgramController extends Controller
         $program->save();
 
         // Retrieve the M:N Relationship data. Using sync() will set them up anew rather than simply appending the new data
-        $program->speakers()->sync($speakers);
-        $program->sponsors()->sync($sponsors);
+        $program->speakers()->attach($speakers);
+        $program->sponsors()->attach($sponsors);
 
         return redirect()->action('ProgramController@edit', ['id' => $program->id]);
     }
@@ -184,8 +184,11 @@ class ProgramController extends Controller
     {
         $program = Program::find($id);
 
-        $program->destroy();
+        $program->speakers()->detach();
+        $program->sponsors()->detach();
 
-        return redirect()->route('program');
+        $program->delete();
+
+        return redirect()->action('ProgramController@index');
     }
 }
