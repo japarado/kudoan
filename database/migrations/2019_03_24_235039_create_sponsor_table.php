@@ -18,7 +18,7 @@ class CreateSponsorTable extends Migration
 
             $table->string('name');
             $table->text('desc');
-            $table->string('logo');
+            $table->string('logo')->nullable();
 
             $table->timestamps();
         });

@@ -17,15 +17,13 @@
                 <h3>
                     <a href="{{ route('program.show', $program->id) }}">{{ $program->name }}</a>
                 </h3>
-                <p class="font-weight-light"> Date: {{ $program->date }}</p>
-                <p class="font-weight-light">{{ $program->time_from }} - {{ $program->time_to }}</p>
 
                 @auth
                     <a class="btn btn-primary" href="{{ route('program.edit', $program->id) }}">Edit</a>
-                {{ Form::open(['route' => ['program.destroy', $program->id], 'method' => 'delete']) }}
-                    {{ Form::token() }}
-                    {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
-                {{ Form::close() }}
+                    {{ Form::open(['route' => ['program.destroy', $program->id], 'method' => 'delete']) }}
+                        {{ Form::token() }}
+                        {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
+                    {{ Form::close() }}
                 @endauth
             </li>
         @endforeach

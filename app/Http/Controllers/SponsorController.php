@@ -2,12 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
+
+use Illuminate\Http\File;
 use Illuminate\Http\Request;
 
 use App\Sponsor;
 
 class SponsorController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -44,6 +51,26 @@ class SponsorController extends Controller
     public function store(Request $request)
     {
         //
+        $name = $request->input('name');
+        $desc = $request->input('desc');
+        $logo = $request->file('logo');
+
+
+        $sponsor = new Sponsor;
+
+        $sponsor->name = $name;
+        $sponsor->desc = $desc;
+
+        $sponsor->save();
+
+        $path = Storage::put("public/sponsor/$sponsor->id", $logo);
+        $sponsor->logo = basename($path);
+
+        $sponsor->save();
+
+        //$sponsor->logo = Storage::putFile("sponsor/$sponsor->id}", new File($logo), 'public');
+
+        return redirect()->action('SponsorController@edit', [$sponsor]);
     }
 
     /**
@@ -54,7 +81,16 @@ class SponsorController extends Controller
      */
     public function show($id)
     {
-        //
+        $sponsor = Sponsor::find($id);
+
+        $logo = asset("storage/sponsor/$sponsor->id/$sponsor->logo");
+
+        $context = [
+            'sponsor' => $sponsor,
+            'logo' => $logo,
+        ];
+
+        return view('sponsor.show', $context);
     }
 
     /**
@@ -65,7 +101,16 @@ class SponsorController extends Controller
      */
     public function edit($id)
     {
-        //
+        $sponsor = Sponsor::find($id);
+
+        $logo = asset("storage/sponsor/$sponsor->id/$sponsor->logo");
+
+        $context = [
+            'sponsor' => $sponsor,
+            'logo' => $logo,
+        ];
+
+        return view('sponsor.edit', $context);
     }
 
     /**
