@@ -49,6 +49,14 @@
                                         </ul>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td>Status</td>
+                                    @if($program->status)
+                                        <td class="text-success">Ongoing</td>
+                                    @else
+                                        <td class="text-danger">Over</td>
+                                    @endif
+                                </tr>
                             </table>
                         </li>
                     @endforeach

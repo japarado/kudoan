@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Program;
+use Carbon\Carbon;
 
 class AdminController extends Controller
 {
@@ -22,6 +23,17 @@ class AdminController extends Controller
     {
         $programs = Program::all();
 
+        foreach($programs as $program)
+        {
+            if(Carbon::today() < $program->date)
+            {
+                $program->status = true;
+            }
+            else
+            {
+                $program->status = false;
+            }
+        }
         $context = [
             'programs' => $programs,
         ];
