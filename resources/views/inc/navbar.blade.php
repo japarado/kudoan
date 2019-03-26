@@ -74,11 +74,13 @@
             @endguest
 
             @auth
-                <li class="nav-item">
-                    <a class="nav-link @yield('dashboard-active')" href="{{ route('admin.index') }}">
-                        Dashboard
-                    </a>
-                </li>
+                @if(Auth::user()->type == 'ADMIN')
+                    <li class="nav-item">
+                        <a class="nav-link @yield('dashboard-active')" href="{{ route('admin.index') }}">
+                            Dashboard
+                        </a>
+                    </li>
+                @endif
                 <li class="nav-item">
                     <a class="nav-link">
                         {{ Auth::user()->name }}
