@@ -68,6 +68,7 @@ class ProgramController extends Controller
         $program->objective = $request->input('objective');
         $program->program = $request->input('program');
         $program->admin_id = auth()->user()->admin->user_id;
+        $program->survey_link = $request->survey_link;
 
         $sponsors = $request->input('sponsors');
         $speakers = $request->input('speakers');
@@ -170,6 +171,7 @@ class ProgramController extends Controller
         $program->objective = $request->input('objective');
         $program->program = $request->input('program');
         $program->admin_id = auth()->user()->admin->user_id;
+        $program->survey_link = $request->input('survey_link');
 
 
         $sponsors = $request->input('sponsors');

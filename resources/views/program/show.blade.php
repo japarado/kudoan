@@ -79,6 +79,8 @@
                 @auth
                     @if(Auth::user()->admin)
                         <a class="btn btn-primary" href="{{ route('program.edit', $program->id) }}">Edit</a>
+                    @else
+                        {{ Form::open() }}
                     @endif
                 @endauth
             {{ Form::close() }}
