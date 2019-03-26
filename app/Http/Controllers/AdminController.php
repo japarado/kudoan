@@ -25,14 +25,26 @@ class AdminController extends Controller
 
         foreach($programs as $program)
         {
+            if(Carbon::today () > $program->date)
+            {
+                $program->status = "Event Over";
+            }
+            if(Carbon::today() == $program->date)
+            {
+                $program->status = "Ongoing";
+            }
             if(Carbon::today() < $program->date)
+            {
+                $program->status = "Event yet to start";
+            }
+            /*if(Carbon::today() < $program->date)
             {
                 $program->status = true;
             }
             else
             {
                 $program->status = false;
-            }
+            }*/
         }
         $context = [
             'programs' => $programs,

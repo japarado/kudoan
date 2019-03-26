@@ -51,10 +51,12 @@
                                 </tr>
                                 <tr>
                                     <td>Status</td>
-                                    @if($program->status)
-                                        <td class="text-success">Ongoing</td>
-                                    @else
-                                        <td class="text-danger">Over</td>
+                                    @if($program->status == 'Event Over')
+                                        <td class="text-danger">{{ $program->status }}</td>
+                                    @elseif($program->status == 'Ongoing')
+                                        <td class="text-info">Ongoing</td>
+                                    @elseif($program->status == 'Event yet to start')
+                                        <td class="text-success">{{ $program->status }}</td>
                                     @endif
                                 </tr>
                             </table>
