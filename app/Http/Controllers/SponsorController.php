@@ -118,11 +118,11 @@ class SponsorController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $sponsor = Sponsor::find($id);
+
         $name = $request->input('name');
         $desc = $request->input('desc');
         $logo = $request->file('logo');
-
-        $sponsor = Sponsor::find($id);
 
         $sponsor->name = $name;
         $sponsor->desc = $desc;
@@ -130,7 +130,7 @@ class SponsorController extends Controller
 
         $path = Storage::put("public/sponsor/{$sponsor->id}", $logo);
 
-        $sponsor->logo = basename($path);
+        $sponsor->logo = $path ? basename($path) : "public/sponsor/$sponsor->id/$sponsor->logo";
 
         $sponsor->save();
 
@@ -145,6 +145,5 @@ class SponsorController extends Controller
      */
     public function destroy($id)
     {
-        //
     }
 }

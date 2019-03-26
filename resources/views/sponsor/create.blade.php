@@ -28,8 +28,8 @@
                 </div>
                 <div class="form-row">
                     <div class="col">
-                        {{ Form::label('logo', 'Logo') }}
-                        {{ Form::file('logo', ['class' => 'form-control-file', 'accept' => 'image/*', 'required' => true]) }}
+                        {{ Form::label('picture', 'Picture') }}
+                        {{ Form::file('picture', ['class' => 'form-control-file', 'accept' => 'image/*', 'required' => true]) }}
                     </div>
                 </div>
                 {{ Form::submit('Save', ['class' => 'btn btn-primary mt-4']) }}

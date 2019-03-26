@@ -1,35 +1,40 @@
 @extends('base')
 
 @section('title')
-    Create Program
+    Editing {{ $speaker->name }}
 @endsection
 
-@section('create-program-active')
+@section('speaker-active')
     active
 @endsection
 
 @section('content')
-    <h1>Create speakers</h1>
+    <h1>{{ $speaker->name }}</h1>
     <div class="row d-flex justify-content-center">
         <div class="col-md-8">
-            {{ Form::open(['route' => 'speaker.store', 'method' => 'post', 'files' => true]) }}
+            {{ Form::open(['route' => ['speaker.update', $speaker->id], 'method' => 'put', 'files' => true]) }}
                 {{ Form::token() }}
                 <div class="form-row">
                     <div class="col">
                         {{ Form::label('name', 'Speaker Name') }}
-                        {{ Form::text('name', '', ['class' => 'form-control', 'required' => true]) }}
+                        {{ Form::text('name', $speaker->name, ['class' => 'form-control', 'required' => true]) }}
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col">
                         {{ Form::label('desc', 'Description') }}
-                        {{ Form::textarea('desc', '', ['class' => 'form-control', 'required' => true]) }}
+                        {{ Form::textarea('desc', $speaker->desc, ['class' => 'form-control', 'required' => true]) }}
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col">
-                        {{ Form::label('picture', 'Picture') }}
-                        {{ Form::file('picture', ['class' => 'form-control-file', 'accept' => 'image/*', 'required' => true]) }}
+                        {{ Form::label('picture', 'picture') }}
+                        {{ Form::file('picture', ['class' => 'form-control-file', 'accept' => 'image/*']) }}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        <img src="{{ $picture }}">
                     </div>
                 </div>
                 {{ Form::submit('Save', ['class' => 'btn btn-primary mt-4']) }}

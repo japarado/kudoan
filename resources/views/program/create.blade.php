@@ -10,7 +10,7 @@
 
 @section('content')
     <h1 class="text-center mt-4">
-        Create A Program
+        Create A Sponsor
     </h1>
     <div class="row d-flex justify-content-center">
         <div class="col-md-8">

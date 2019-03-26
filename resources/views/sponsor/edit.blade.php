@@ -17,13 +17,13 @@
                 <div class="form-row">
                     <div class="col">
                         {{ Form::label('name', 'Sponsor Name') }}
-                        {{ Form::text('name', $sponsor->name, ['class' => 'form-control']) }}
+                        {{ Form::text('name', $sponsor->name, ['class' => 'form-control', 'required' => true]) }}
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col">
                         {{ Form::label('desc', 'Description') }}
-                        {{ Form::textarea('desc', $sponsor->desc, ['class' => 'form-control']) }}
+                        {{ Form::textarea('desc', $sponsor->desc, ['class' => 'form-control', 'required' => true]) }}
                     </div>
                 </div>
                 <div class="form-row">

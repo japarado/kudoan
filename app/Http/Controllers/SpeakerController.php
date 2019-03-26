@@ -80,7 +80,7 @@ class SpeakerController extends Controller
 
         $context = [
             'speaker' => $speaker,
-            'logo' => $picture,
+            'picture' => $picture,
         ];
 
         return view('speaker.show', $context);
@@ -96,7 +96,7 @@ class SpeakerController extends Controller
     {
         $speaker = Speaker::find($id);
 
-        $picture = asset("storage/speaker/$speaker->id/$speaker->logo");
+        $picture = asset("storage/speaker/$speaker->id/$speaker->picture");
 
         $context = [
             'speaker' => $speaker,
@@ -115,7 +115,23 @@ class SpeakerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $speaker = Speaker::find($id);
+
+        $name = $request->input('name');
+        $desc = $request->input('desc');
+        $picture = $request->file('picture');
+
+        $speaker->name = $name;
+        $speaker->desc = $desc;
+        $speaker->save();
+
+        $path = Storage::put("public/speaker/{$speaker->id}", $picture);
+
+        $speaker->picture = $path ? basename($path) : "public/speaker/$speaker->id/$picture->logo";
+
+        $speaker->save();
+
+        return redirect()->action('SpeakerController@edit', $speaker);
     }
 
     /**
@@ -126,6 +142,8 @@ class SpeakerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Speaker::destroy($id);
+
+        return redirect()->action('SpeakerController@index');
     }
 }
