@@ -17,19 +17,19 @@
                 <div class="form-row">
                     <div class="col">
                         {{ Form::label('name', 'Sponsor Name') }}
-                        {{ Form::text('name', '', ['class' => 'form-control']) }}
+                        {{ Form::text('name', '', ['class' => 'form-control', 'required' => true]) }}
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col">
                         {{ Form::label('desc', 'Description') }}
-                        {{ Form::textarea('desc', '', ['class' => 'form-control']) }}
+                        {{ Form::textarea('desc', '', ['class' => 'form-control', 'required' => true]) }}
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col">
                         {{ Form::label('logo', 'Logo') }}
-                        {{ Form::file('logo', ['class' => 'form-control-file', 'accept' => 'image/*']) }}
+                        {{ Form::file('logo', ['class' => 'form-control-file', 'accept' => 'image/*', 'required' => true]) }}
                     </div>
                 </div>
                 {{ Form::submit('Save', ['class' => 'btn btn-primary mt-4']) }}

@@ -26,6 +26,7 @@ class CreateProgramTable extends Migration
             $table->text('what_is');
             $table->text('objective');
             $table->text('program');
+            $table->text('survey_link')->nullable()->default('surveywebsite.com');
 
             $table->timestamps();
 

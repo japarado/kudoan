@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
+
+use Illuminate\Http\File;
 use Illuminate\Http\Request;
 
 use App\Speaker;
-use Illuminate\Support\Facades\Storage;
 
 class SpeakerController extends Controller
 {
@@ -44,7 +46,24 @@ class SpeakerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $name = $request->input('name');
+        $desc = $request->input('desc');
+        $picture = $request->file('picture');
+
+        $speaker = new Speaker;
+
+        $speaker->name = $name;
+        $speaker->desc = $desc;
+
+        $speaker->save();
+
+        $path = Storage::put("public/speaker/$speaker->id", $picture);
+
+        $speaker->picture = basename($path);
+
+        $speaker->save();
+
+        return redirect()->action('SpeakerController@edit', [$speaker]);
     }
 
     /**
@@ -55,7 +74,16 @@ class SpeakerController extends Controller
      */
     public function show($id)
     {
-        //
+        $speaker = Speaker::find($id);
+
+        $picture = asset("storage/speaker/$speaker->id/$speaker->picture");
+
+        $context = [
+            'speaker' => $speaker,
+            'logo' => $picture,
+        ];
+
+        return view('speaker.show', $context);
     }
 
     /**
@@ -66,7 +94,16 @@ class SpeakerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $speaker = Speaker::find($id);
+
+        $picture = asset("storage/speaker/$speaker->id/$speaker->logo");
+
+        $context = [
+            'speaker' => $speaker,
+            'picture' => $picture,
+        ];
+
+        return view('speaker.edit', $context);
     }
 
     /**

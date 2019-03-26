@@ -1,5 +1,9 @@
 @extends('base')
 
+@section('title')
+    Editing {{ $sponsor->name }}
+@endsection
+
 @section('sponsor-active')
     active
 @endsection
@@ -13,19 +17,19 @@
                 <div class="form-row">
                     <div class="col">
                         {{ Form::label('name', 'Sponsor Name') }}
-                        {{ Form::text('name', $sponsor->name, ['class' => 'form-control', 'disabled']) }}
+                        {{ Form::text('name', $sponsor->name, ['class' => 'form-control']) }}
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col">
                         {{ Form::label('desc', 'Description') }}
-                        {{ Form::textarea('desc', $sponsor->desc, ['class' => 'form-control', 'disabled']) }}
+                        {{ Form::textarea('desc', $sponsor->desc, ['class' => 'form-control']) }}
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col">
                         {{ Form::label('logo', 'Logo') }}
-                        <input type="file" class="form-control-file" accept="image/*" value="{{ $sponsor->logo }}">
+                        {{ Form::file('logo', ['class' => 'form-control-file', 'accept' => 'image/*']) }}
                     </div>
                 </div>
                 <div class="form-row">

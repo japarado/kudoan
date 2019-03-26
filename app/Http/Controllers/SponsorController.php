@@ -50,27 +50,23 @@ class SponsorController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $name = $request->input('name');
         $desc = $request->input('desc');
         $logo = $request->file('logo');
-
 
         $sponsor = new Sponsor;
 
         $sponsor->name = $name;
         $sponsor->desc = $desc;
-
         $sponsor->save();
 
-        $path = Storage::put("public/sponsor/$sponsor->id", $logo);
+        $path = Storage::put("public/sponsor/{$sponsor->id}", $logo);
+
         $sponsor->logo = basename($path);
 
         $sponsor->save();
 
-        //$sponsor->logo = Storage::putFile("sponsor/$sponsor->id}", new File($logo), 'public');
-
-        return redirect()->action('SponsorController@edit', [$sponsor]);
+        return redirect()->action('SponsorController@edit', $sponsor);
     }
 
     /**
@@ -122,7 +118,23 @@ class SponsorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $name = $request->input('name');
+        $desc = $request->input('desc');
+        $logo = $request->file('logo');
+
+        $sponsor = Sponsor::find($id);
+
+        $sponsor->name = $name;
+        $sponsor->desc = $desc;
+        $sponsor->save();
+
+        $path = Storage::put("public/sponsor/{$sponsor->id}", $logo);
+
+        $sponsor->logo = basename($path);
+
+        $sponsor->save();
+
+        return redirect()->action('SponsorController@edit', $sponsor);
     }
 
     /**
