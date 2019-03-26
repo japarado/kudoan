@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
 use App\Program;
@@ -68,10 +69,16 @@ class ProgramController extends Controller
         $program->program = $request->input('program');
         $program->admin_id = auth()->user()->admin->user_id;
 
-
         $sponsors = $request->input('sponsors');
         $speakers = $request->input('speakers');
 
+
+        $program->save();
+
+        $venue = $request->file('venue');
+
+        $path = Storage::put("public/program/$program->id", $venue);
+        $program->venue = basename($path);
 
         $program->save();
 
@@ -92,8 +99,11 @@ class ProgramController extends Controller
     {
         $program = Program::find($id);
 
+        $venue = asset("storage/program/$program->id/$program->venue");
+
         $context = [
             'program' => $program,
+            'venue' => $venue
         ];
 
         return view('program.show', $context);
@@ -129,10 +139,13 @@ class ProgramController extends Controller
         $sponsors = Sponsor::whereNotIn('id', $taken_sponsor_ids)->get();
         $speakers = Speaker::whereNotIn('id', $taken_speaker_ids)->get();
 
+        $venue = asset("storage/program/$program->id/$program->venue");
+
         $context = [
             'program' => $program,
             'sponsors' => $sponsors,
             'speakers' => $speakers,
+            'venue' => $venue,
         ];
 
         return view('program.edit', $context);
@@ -161,6 +174,10 @@ class ProgramController extends Controller
 
         $sponsors = $request->input('sponsors');
         $speakers = $request->input('speakers');
+
+        $venue = $request->file('venue');
+        $path = Storage::put("public/program/$program->id", $venue);
+        $program->venue = basename($path);
 
         $program->save();
 

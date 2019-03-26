@@ -10,11 +10,11 @@
 
 @section('content')
     <h1 class="text-center mt-4">
-        Create A Sponsor
+        Create A Program
     </h1>
     <div class="row d-flex justify-content-center">
         <div class="col-md-8">
-            {{ Form::open(['route' => 'program.store', 'method' => 'post']) }}
+            {{ Form::open(['route' => 'program.store', 'method' => 'post', 'files' => true]) }}
                 {{ Form::token() }}
                 <div class="form-row">
                     <div class="col">
@@ -55,6 +55,14 @@
                         <div class="col">
                             {{ Form::label('program', 'Program') }}
                             {{ Form::textarea('program', '', ['class' => 'form-control']) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col">
+                        {{ Form::label('venue', 'Venue') }}
+                        {{ Form::file('venue', ['class' => 'form-control-file', 'accept' => 'image/*', 'required' => true]) }}
                         </div>
                     </div>
                 </div>

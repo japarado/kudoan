@@ -14,7 +14,7 @@
     </h1>
     <div class="row d-flex justify-content-center">
         <div class="col-md-8">
-            {{ Form::open(['route' => ['program.update', $program->id], 'method' => 'PUT']) }}
+            {{ Form::open(['route' => ['program.update', $program->id], 'method' => 'PUT', 'files' => true]) }}
                 {{ Form::token() }}
                 <div class="form-row">
                     <div class="col">
@@ -59,6 +59,14 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <div class="form-row">
+                        <div class="col">
+                        {{ Form::label('venue', 'Venue') }}
+                        {{ Form::file('venue', ['class' => 'form-control-file', 'accept' => 'image/*', 'required' => true]) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
                     <h2>Sponsors</h2>
                     <div class="form-check">
                         @foreach($program->sponsors as $current_sponsor)
@@ -86,6 +94,7 @@
                         @endforeach
                     </div>
                 </div>
+                <img src="{{ $venue }}">
                 {{ Form::submit('Save', ['class' => 'btn btn-primary']) }}
             {{ Form::close() }}
         </div>
