@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Sponsor;
 use App\Speaker;
 use App\Program;
+use App\User;
 
 class Program extends Model
 {
@@ -26,5 +27,10 @@ class Program extends Model
     public function admin()
     {
         return $this->belongsTo(Admin::class);
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
     }
 }

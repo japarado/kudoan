@@ -61,6 +61,14 @@
                 <div class="form-group">
                     <div class="form-row">
                         <div class="col">
+                            {{ Form::label('survey_link', 'Survey Link') }}
+                            {{ Form::text('survey_link', '', ['class' => 'form-control']) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col">
                         {{ Form::label('venue', 'Venue') }}
                         {{ Form::file('venue', ['class' => 'form-control-file', 'accept' => 'image/*', 'required' => true]) }}
                         </div>

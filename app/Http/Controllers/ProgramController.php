@@ -25,7 +25,18 @@ class ProgramController extends Controller
      */
     public function index()
     {
-        $programs = Program::all();
+        if(auth()->user()->type == 'ADMIN')
+        {
+            $programs = Program::all();
+        }
+        elseif(auth()->user()->type == 'USER')
+        {
+            $taken_program_ids = DB::table('program_user')->select('program_id')->where('user_id', '=', auth()->user()->id)->get();
+
+            $programs = Program::whereNotIn('id', $taken_program_ids);
+
+            return print_r($programs);
+        }
 
         $context = [
             'programs' => $programs,
@@ -68,7 +79,7 @@ class ProgramController extends Controller
         $program->objective = $request->input('objective');
         $program->program = $request->input('program');
         $program->admin_id = auth()->user()->admin->user_id;
-        $program->survey_link = $request->survey_link;
+        $program->survey_link = $request->input('survey_link');
 
         $sponsors = $request->input('sponsors');
         $speakers = $request->input('speakers');

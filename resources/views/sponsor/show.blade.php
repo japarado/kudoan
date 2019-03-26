@@ -28,7 +28,7 @@
                     </div>
                 </div>
                 @auth
-                    @if(Auth::user()->admin())
+                    @if(Auth::user()->admin)
                         <a href="{{ route('sponsor.edit', $sponsor->id) }}" class="btn btn-primary">Edit</a>
                     @endif
                 @endauth

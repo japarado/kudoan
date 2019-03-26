@@ -62,7 +62,7 @@
                     <div class="form-row">
                         <div class="col-3">
                             {{ Form::label('survey_link', 'Survey Link') }}
-                            {{ Form::textarea('survey_link', $program->survey_link, ['class' => 'form-control']) }}
+                            {{ Form::text('survey_link', $program->survey_link, ['class' => 'form-control']) }}
                         </div>
                     </div>
                 </div>

@@ -4,7 +4,7 @@
     Programs
 @endsection
 
-@section('program-active')
+@section('user-active')
     active
 @endsection
 
@@ -27,11 +27,7 @@
                         {{ Form::close() }}
 
                     @else
-                        {{ Form::open(['route' => 'user.store', 'method' => 'post']) }}
-                            {{ Form::token() }}
-                            {{ Form::hidden('program_id', $program->id) }}
-                            {{ Form::submit('Register', ['class' => 'btn btn-primary']) }}
-                        {{ Form::close() }}
+                        <h3 class="alert alert-success">You're registered to this event</h3>
                     @endif
                 @endauth
             </li>

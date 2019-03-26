@@ -59,6 +59,13 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <div class="form-row">
+                        <div class="col">
+                            <a href="{{ $program->survey_link }}">Survey Link</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
                     <h2>Sponsors</h2>
                     <div class="form-check">
                         @foreach($program->sponsors as $current_sponsor)
@@ -85,6 +92,8 @@
                 @endauth
             {{ Form::close() }}
             <img src={{ $venue }}>
+
+            {{ Form::open([]) }}
         </div>
     </div>
 @endsection

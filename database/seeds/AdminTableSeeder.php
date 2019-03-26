@@ -15,14 +15,10 @@ class AdminTableSeeder extends Seeder
      */
     public function run()
     {
-        //
-        $users = User::all();
+        $user = User::find(1);
 
-        foreach($users as $user)
-        {
-            DB::table('admin')->insert([
-                'user_id' => $user->id,
-            ]);
-        }
+        DB::table('admin')->insert([
+            'user_id' => $user->id,
+        ]);
     }
 }

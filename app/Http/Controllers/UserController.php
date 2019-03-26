@@ -4,8 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Program;
+
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +19,13 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $programs = auth()->user()->programs;
+
+        $context = [
+            'programs' => $programs
+        ];
+
+        return view('user.index', $context);
     }
 
     /**
@@ -34,7 +46,12 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $program = Program::find($request->input('program_id'));
+        $user = auth()->user();
+
+        $program->users()->attach($user->id);
+
+        return back();
     }
 
     /**
@@ -68,7 +85,6 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
     }
 
     /**

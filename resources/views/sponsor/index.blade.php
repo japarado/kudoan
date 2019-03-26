@@ -24,8 +24,6 @@
                             {{ Form::token() }}
                             {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
                         {{ Form::close() }}
-                    @else
-                        LOGGED IN BUT NOT ADMIN
                     @endif
                 @endauth
             </li>

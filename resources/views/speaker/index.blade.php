@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-    <h1>Speaker</h1>
+    <h1>Speakers</h1>
 
     <ul class='list-group'>
         @foreach($speakers as $speaker)
@@ -24,8 +24,6 @@
                             {{ Form::token() }}
                             {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
                         {{ Form::close() }}
-                    @else
-                        LOGGED IN BUT NOT ADMIN
                     @endif
                 @endauth
             </li>

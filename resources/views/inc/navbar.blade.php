@@ -5,26 +5,33 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item @yield('home-active')">
-                <a class="nav-link" href="{{ URL::to('/') }}">Home <span class="sr-only">(current)</span></a>
-            </li>
-
-            @guest
-                <li class="nav-item @yield('program-active')">
-                    <a class="nav-link" href="{{ route('program.index') }}">Programs<span class="sr-only">(current)</span></a>
-                </li>
-
-                <li class="nav-item @yield('speaker-active')">
-                    <a class="nav-link" href="{{ route('speaker.index') }}">Speakers<span class="sr-only">(current)</span></a>
-                </li>
-
-                <li class="nav-item @yield('sponsor-active')">
-                    <a class="nav-link" href="{{ route('sponsor.index') }}">Sponsors<span class="sr-only">(current)</span></a>
-                </li>
-            @endguest
 
             @auth
-                @if(Auth::user()->type === 'ADMIN')
+                @if(Auth::user()->type == 'USER')
+                    <li class="nav-item @yield('user-active')">
+                        <a class="nav-link" href="{{ route('user.index') }}">My Events<span class="sr-only">(current)</span></a>
+                    </li>
+                @endif
+            @endauth
+
+            @auth
+                @if(Auth::user()->type == 'USER')
+                    <li class="nav-item @yield('program-active')">
+                        <a class="nav-link" href="{{ route('program.index') }}">Programs<span class="sr-only">(current)</span></a>
+                    </li>
+
+                    <li class="nav-item @yield('speaker-active')">
+                        <a class="nav-link" href="{{ route('speaker.index') }}">Speakers<span class="sr-only">(current)</span></a>
+                    </li>
+
+                    <li class="nav-item @yield('sponsor-active')">
+                        <a class="nav-link" href="{{ route('sponsor.index') }}">Sponsors<span class="sr-only">(current)</span></a>
+                    </li>
+                @endif
+            @endauth
+
+            @auth
+                @if(Auth::user()->type == 'ADMIN')
 
                     <li class="nav-item @yield('program-active')">
                         <a class="nav-link" href="{{ route('program.index') }}">Programs<span class="sr-only">(current)</span></a>
