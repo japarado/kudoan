@@ -127,7 +127,7 @@ class SpeakerController extends Controller
 
         $path = Storage::put("public/speaker/{$speaker->id}", $picture);
 
-        $speaker->picture = $path ? basename($path) : "public/speaker/$speaker->id/$picture->logo";
+        $speaker->picture = $path ? basename($path) : "public/speaker/$speaker->id/$speaker->logo";
 
         $speaker->save();
 
