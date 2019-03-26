@@ -79,12 +79,16 @@
                     <div class="form-check">
                         @foreach($program->sponsors as $current_sponsor)
                             {{ Form::checkbox('sponsors[]', $current_sponsor->id, true) }}
-                            {{ Form::label($current_sponsor->id, $current_sponsor->name) }}
+                            <a href="{{ route('sponsor.show', $current_sponsor->id) }}" target="_blank">
+                                {{ Form::label($current_sponsor->id, $current_sponsor->name) }}
+                            </a>
                         @endforeach
 
                         @foreach($sponsors as $sponsor)
                             {{ Form::checkbox('sponsors[]', $sponsor->id, false) }}
-                            {{ Form::label($sponsor->id, $sponsor->name) }}
+                            <a href="{{ route('sponsor.show', $sponsor->id) }}" target="_blank">
+                                {{ Form::label($sponsor->id, $sponsor->name) }}
+                            </a>
                         @endforeach
                     </div>
                 </div>
@@ -93,12 +97,16 @@
                     <div class="form-check">
                         @foreach($program->speakers as $current_speaker)
                             {{ Form::checkbox('speakers[]', $current_speaker->id, true) }}
-                            {{ Form::label($current_speaker->id, $current_speaker->name) }}
+                            <a href="{{ route('speaker.show', $current_speaker->id) }}" target="_blank">
+                                {{ Form::label($current_speaker->id, $current_speaker->name) }}
+                            </a>
                         @endforeach
 
                         @foreach($speakers as $speaker)
                             {{ Form::checkbox('speakers[]', $speaker->id, false) }}
-                            {{ Form::label($speaker->id, $speaker->name) }}
+                            <a href="{{ route('speaker.show', $speaker->id) }}" target='_blank'>
+                                {{ Form::label($speaker->id, $speaker->name) }}
+                            </a>
                         @endforeach
                     </div>
                 </div>

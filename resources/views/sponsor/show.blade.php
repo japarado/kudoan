@@ -1,5 +1,9 @@
 @extends('base')
 
+@section('title')
+    Sponsor {{ $sponsor->name }}
+@endsection
+
 @section('create-sponsor-active')
     active
 @endsection

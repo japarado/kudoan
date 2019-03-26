@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('title')
-    Create Program
+    Program: {{ $program->name }}
 @endsection
 
 @section('program-active')
