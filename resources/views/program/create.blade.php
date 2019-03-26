@@ -79,7 +79,9 @@
                     <div class="form-check">
                         @foreach($sponsors as $sponsor)
                             {{ Form::checkbox('sponsors', $sponsor->id) }}
-                            {{ Form::label($sponsor->id, $sponsor->name) }}
+                            <a href="{{ route('sponsor.show', $sponsor->id) }}" target="_blank">
+                                {{ Form::label($sponsor->id, $sponsor->name) }}
+                            </a>
                         @endforeach
                     </div>
                 </div>
@@ -88,7 +90,8 @@
                     <div class="form-check">
                         @foreach($speakers as $speaker)
                             {{ Form::checkbox('speakers', $speaker->id) }}
-                            {{ Form::label($speaker->id, $speaker->name) }}
+                            <a href="{{ route('speaker.show', $speaker->id) }}" target="_blank">                                {{ Form::label($speaker->id, $speaker->name) }}
+                            </a>
                         @endforeach
                     </div>
                 </div>
