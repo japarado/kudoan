@@ -222,6 +222,7 @@ class ProgramController extends Controller
 
         $program->speakers()->detach();
         $program->sponsors()->detach();
+        $program->users()->detach();
 
         $program->delete();
 

@@ -76,7 +76,6 @@
             @auth
                 @if(Auth::user()->type == 'ADMIN')
                     <li class="nav-item">
-    public function index()
                         <a class="nav-link @yield('dashboard-active')" href="{{ route('admin.index') }}">
                             Dashboard
                         </a>
