@@ -75,6 +75,11 @@
 
             @auth
                 <li class="nav-item">
+                    <a class="nav-link @yield('dashboard-active')" href="{{ route('admin.index') }}">
+                        Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link">
                         {{ Auth::user()->name }}
                     </a>

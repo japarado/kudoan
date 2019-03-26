@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Program;
+
 class AdminController extends Controller
 {
     public function __construct()
@@ -18,7 +20,13 @@ class AdminController extends Controller
      */
     public function index()
     {
-        //
+        $programs = Program::all();
+
+        $context = [
+            'programs' => $programs,
+        ];
+
+        return view('admin.index', $context);
     }
 
     /**
