@@ -33,9 +33,14 @@ class ProgramController extends Controller
         {
             $taken_program_ids = DB::table('program_user')->select('program_id')->where('user_id', '=', auth()->user()->id)->get();
 
-            $programs = Program::whereNotIn('id', $taken_program_ids);
+            $taken_program_ids_array = [];
 
-            return print_r($programs);
+            foreach($taken_program_ids as $taken_program_id)
+            {
+                array_push($taken_program_ids_array, $taken_program_id->program_id);
+            }
+
+            $programs = DB::table('program')->whereNotIn('id', $taken_program_ids_array)->get();
         }
 
         $context = [

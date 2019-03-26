@@ -19,9 +19,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::('/', function() {
-    return view('home');
-})
+Route::get('/', function() {
+    return view('index');
+});
 
 Route::resource('program', 'ProgramController');
 Route::resource('admin', 'AdminController');
