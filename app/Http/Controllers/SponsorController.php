@@ -146,5 +146,12 @@ class SponsorController extends Controller
      */
     public function destroy($id)
     {
+        $sponsor = Sponsor::find($id);
+
+        $sponsor->programs()->detach();
+
+        $sponsor->delete();
+
+        return redirect()->action('SponsorController@index');
     }
 }

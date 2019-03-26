@@ -146,7 +146,11 @@ class SpeakerController extends Controller
      */
     public function destroy($id)
     {
-        Speaker::destroy($id);
+        $speaker = Speaker::find($id);
+
+        $speaker->programs()->detach();
+
+        $speaker->delete();
 
         return redirect()->action('SpeakerController@index');
     }
